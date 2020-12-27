@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 10.0f;
 
     public GameObject projectilePrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +19,17 @@ public class PlayerController : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * (Time.deltaTime * horizontalInput * speed));
-        
+
         // Makes it so that it's only visible in a given range
         // Mathf.Clamp: https://docs.unity3d.com/ScriptReference/Mathf.Clamp.html
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -10, 10), 0.0f, 0.0f);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // Launch a projectile from player   
+
+            // Instantiate - lets you copy a prefab
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        }
     }
 }

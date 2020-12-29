@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject[] animalPrefabs;
-    public int animalIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +14,7 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int animalIndex = Random.Range(0, animalPrefabs.Length);
         GameObject currentAnimal = animalPrefabs[animalIndex];
 
         if (Input.GetKeyDown(KeyCode.S))

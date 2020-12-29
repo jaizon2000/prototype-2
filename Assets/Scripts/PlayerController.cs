@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
 
     public GameObject projectilePrefab;
 
+    private int outOfBoundRange = 20;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +25,8 @@ public class PlayerController : MonoBehaviour
 
         // Makes it so that it's only visible in a given range
         // Mathf.Clamp: https://docs.unity3d.com/ScriptReference/Mathf.Clamp.html
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -10, 10), 0.0f, 0.0f);
+        transform.position =
+            new Vector3(Mathf.Clamp(transform.position.x, -outOfBoundRange, outOfBoundRange), 0.0f, 0.0f);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {

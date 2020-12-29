@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyOutOfBounds : MonoBehaviour
 {
+    // Bound limits
     private float topBound = 30;
     private float lowerBound = -10;
 
@@ -18,6 +20,7 @@ public class DestroyOutOfBounds : MonoBehaviour
         if (transform.position.z > topBound || transform.position.z < lowerBound)
         {
             Destroy(gameObject);
+            Debug.Log(("Game over!"));
         }
     }
 }

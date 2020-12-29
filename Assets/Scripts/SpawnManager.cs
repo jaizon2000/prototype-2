@@ -6,6 +6,10 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject[] animalPrefabs;
 
+    private float spawnRangeX = 20;
+
+    private float spawnRangeZ = 20;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +20,10 @@ public class SpawnManager : MonoBehaviour
     {
         int animalIndex = Random.Range(0, animalPrefabs.Length);
         GameObject currentAnimal = animalPrefabs[animalIndex];
-
+        Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnRangeZ);
         if (Input.GetKeyDown(KeyCode.S))
         {
-            Instantiate(currentAnimal, new Vector3(0, 0, 20), currentAnimal.transform.rotation);
+            Instantiate(currentAnimal, spawnPos, currentAnimal.transform.rotation);
         }
     }
 }
